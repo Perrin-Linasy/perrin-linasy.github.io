@@ -117,101 +117,93 @@ ul{ list-style:none; margin:0; padding:0; }
     repeating-linear-gradient(0deg, rgba(20,51,94,0.06) 0 1px, transparent 1px 96px);
 }
 .page-title .wrap{ position:relative; }
-.page-title h1{ margin:0; }
+.page-title h1{ margin:0; }/* ============ 1 — LOGOS CRÉÉS ============ */
 
-/* ============ 1 — LOGOS CRÉÉS ============ */
+.logos { padding: 64px 0 56px; }
+.logos h2 { margin-bottom: 40px; }
 
-.slide-circle img.carousel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* Évite que les logos ne soient écrasés ou déformés */
-  border-radius: 50%;  /* Force le fond des PNG opaques à devenir parfaitement rond */
-  display: block;
+.carousel { position: relative; }
+.carousel-viewport { overflow: hidden; padding: 24px 0 20px; }
+
+.carousel-track {
+  display: flex;
+  gap: var(--slide-gap);
+  width: max-content;
+  transition: transform .8s var(--ease);
+  will-change: transform;
 }
 
-.logos{ padding:64px 0 56px; }
-.logos h2{ margin-bottom:40px; }
+.slide {
+  flex: 0 0 var(--slide-size);
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  opacity: 0.4;
+  transform: scale(0.74);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.slide.is-active { opacity: 1; transform: scale(1); }
 
-.carousel{ position:relative; }
-.carousel-viewport{ overflow:hidden; padding:24px 0 20px; }
-
-.carousel-track{
-  display:flex;
-  gap:var(--slide-gap);
-  width:max-content;
-  transition:transform .8s var(--ease);
-  will-change:transform;
+.slide-circle {
+  width: var(--slide-size); height: var(--slide-size);
+  border-radius: 50%;
+  background: var(--creme-2);
+  border: 1px solid rgba(20,51,94,0.2);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  transition: border-color .8s var(--ease), box-shadow .8s var(--ease);
 }
 
-.slide{
-  flex:0 0 var(--slide-size);
-  display:flex; flex-direction:column; align-items:center; gap:16px;
-  opacity:0.4;
-  transform:scale(0.74);
-  transition:opacity .8s var(--ease), transform .8s var(--ease);
-}
-.slide.is-active{ opacity:1; transform:scale(1); }
-
-.slide-circle{
-  width:var(--slide-size); height:var(--slide-size);
-  border-radius:50%;
-  background:var(--creme-2);
-  border:1px solid rgba(20,51,94,0.2);
-  display:flex; align-items:center; justify-content:center;
-  overflow:hidden;
-  transition:border-color .8s var(--ease), box-shadow .8s var(--ease);
-}
-.slide.is-active .slide-circle{
-  border-color:var(--navy);
-  box-shadow:0 0 0 6px var(--creme), 0 0 0 7px var(--safran);
-}
-.slide-circle img{ width:100%; height:100%; object-fit:contain; padding:14%; }
-.slide-placeholder{
-  font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.06em;
-  text-transform:uppercase; color:rgba(20,51,94,0.5);
+.slide.is-active .slide-circle {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 6px var(--creme), 0 0 0 7px var(--safran);
 }
 
-.slide-name{
-  font-family:var(--font-display); font-weight:700; font-size:1.15rem;
-  text-transform:uppercase; letter-spacing:0.02em;
+/* --- RÈGLE CORRIGÉE POUR LES IMAGES --- */
+.slide-circle img.carousel-img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;      /* Recadre le logo proprement pour remplir le cercle */
+  border-radius: 50%;     /* Force le fond noir/opaque de vos PNG à être parfaitement rond */
+  padding: 0;             /* Supprime le padding pour que le fond opaque remplisse tout le cercle */
+  display: block; 
+}
+
+.slide-placeholder {
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(20,51,94,0.5);
+}
+
+.slide-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
+  text-transform: uppercase; letter-spacing: 0.02em;
 }
 
 /* ---------- contrôles ---------- */
-.carousel-controls{
-  display:flex; align-items:center; justify-content:center; gap:14px;
-  margin-top:20px; padding:0 28px;
+.carousel-controls {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin-top: 20px; padding: 0 28px;
 }
-.ctrl{
-  width:44px; height:44px; border-radius:50%;
-  border:1px solid rgba(20,51,94,0.35);
-  display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-mono); font-size:0.95rem;
-  transition:background .25s var(--ease), color .25s var(--ease);
-  flex-shrink:0;
+.ctrl {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid rgba(20,51,94,0.35);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 0.95rem;
+  transition: background .25s var(--ease), color .25s var(--ease);
+  flex-shrink: 0;
 }
-.ctrl:hover{ background:var(--navy); color:var(--creme); }
-.ctrl-pause{ font-size:0.78rem; letter-spacing:-0.05em; }
-.ctrl-pause[aria-pressed="true"]{ background:var(--navy); color:var(--creme); }
+.ctrl:hover { background: var(--navy); color: var(--creme); }
+.ctrl-pause { font-size: 0.78rem; letter-spacing: -0.05em; }
+.ctrl-pause[aria-pressed="true"] { background: var(--navy); color: var(--creme); }
 
-.carousel-status{ display:flex; flex-direction:column; gap:8px; width:140px; }
-.counter{ font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.08em; text-align:center; color:var(--vert); }
-.progress{ height:2px; background:rgba(20,51,94,0.14); overflow:hidden; }
-.progress span{ display:block; height:100%; width:100%; background:var(--safran); transform:scaleX(0); transform-origin:left; }
-.progress span.run{ animation:fill 5s linear forwards; }
-.carousel.is-paused .progress span.run{ animation-play-state:paused; }
-@keyframes fill{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+.carousel-status { display: flex; flex-direction: column; gap: 8px; width: 140px; }
+.counter { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-align: center; color: var(--vert); }
+.progress { height: 2px; background: rgba(20,51,94,0.14); overflow: hidden; }
+.progress span { display: block; height: 100%; width: 100%; background: var(--safran); transform: scaleX(0); transform-origin: left; }
+.progress span.run { animation: fill 5s linear forwards; }
+.carousel.is-paused .progress span.run { animation-play-state: paused; }
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
-/* ============ SUITE — VIDE ============ */
-.suite{ padding:88px 0; min-height:40vh; }
 
-/* ============ FOOTER ============ */
-footer{ padding:40px 0 34px; }
-.foot-top{ display:flex; align-items:center; justify-content:space-between; padding-bottom:26px; border-bottom:1px solid rgba(20,51,94,0.14); margin-bottom:20px; }
-.foot-brand{ display:flex; align-items:center; gap:10px; }
-.foot-top nav ul{ display:flex; gap:26px; flex-wrap:wrap; }
-.foot-top nav a{ font-size:0.9rem; }
-.foot-bottom{ display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; opacity:0.65; }
-.legal-links{ display:flex; gap:18px; }
+
 
 /* ============ ONGLET WHATSAPP ============ */
 .wa-tab{

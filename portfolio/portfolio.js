@@ -1,6 +1,9 @@
-// Copyright dynamique
-document.getElementById('copyright').textContent =
-  '© ' + new Date().getFullYear() + ' Perrin Linasy. Tous droits réservés.';
+// Copyright dynamique sécurisé
+const copyrightEl = document.getElementById('copyright');
+if (copyrightEl) {
+  copyrightEl.textContent = '© ' + new Date().getFullYear() + ' Perrin Linasy. Tous droits réservés.';
+}
+
 
 // Header au scroll
 const header = document.getElementById('site-header');

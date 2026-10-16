@@ -12,8 +12,9 @@ window.addEventListener('scroll', () => {
 });
 
 // Menu mobile
-const menuToggle = document.getElementById('menu-toggle');
-const mainNav = document.getElementById('main-nav');
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('.main-nav');
+ 
 menuToggle.addEventListener('click', () => {
   const isOpen = mainNav.classList.toggle('mobile-open');
   menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');

@@ -1,7 +1,6 @@
 /* ============================================================
    PERRIN LINASY — portfolio.css
    Palette : Navy #14335e / Crème #f5f0e6 / Safran #f1c338 / Vert #2e6b1f
-   Reprend les bases de style.css (header, boutons, footer, WhatsApp)
    ============================================================ */
 
 :root{
@@ -94,7 +93,7 @@ ul{ list-style:none; margin:0; padding:0; }
 #site-header.scrolled{ box-shadow:0 4px 16px rgba(20,51,94,0.08); }
 #site-header .wrap{ display:flex; align-items:center; justify-content:space-between; height:74px; }
 .brand{ display:flex; align-items:center; gap:10px; }
-.brand-logo{ width:38px; height:38px; border-radius:50%; object-fit:contain; flex-shrink:0; }
+.brand-logo{ width:38px; height:38px; border-radius:50%; object-fit:cover; flex-shrink:0; }
 .foot-brand .brand-logo{ width:34px; height:34px; }
 .brand-name{ font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:0.01em; text-transform:uppercase; }
 
@@ -117,8 +116,9 @@ ul{ list-style:none; margin:0; padding:0; }
     repeating-linear-gradient(0deg, rgba(20,51,94,0.06) 0 1px, transparent 1px 96px);
 }
 .page-title .wrap{ position:relative; }
-.page-title h1{ margin:0; }/* ============ 1 — LOGOS CRÉÉS ============ */
+.page-title h1{ margin:0; }
 
+/* ============ 1 — LOGOS CRÉÉS ============ */
 .logos { padding: 64px 0 56px; }
 .logos h2 { margin-bottom: 40px; }
 
@@ -157,13 +157,12 @@ ul{ list-style:none; margin:0; padding:0; }
   box-shadow: 0 0 0 6px var(--creme), 0 0 0 7px var(--safran);
 }
 
-/* --- RÈGLE CORRIGÉE POUR LES IMAGES --- */
 .slide-circle img.carousel-img { 
   width: 100%; 
   height: 100%; 
-  object-fit: cover;      /* Recadre le logo proprement pour remplir le cercle */
-  border-radius: 50%;     /* Force le fond noir/opaque de vos PNG à être parfaitement rond */
-  padding: 0;             /* Supprime le padding pour que le fond opaque remplisse tout le cercle */
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0;
   display: block; 
 }
 
@@ -203,6 +202,38 @@ ul{ list-style:none; margin:0; padding:0; }
 @keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 
+/* ============ NOUVELLE MISE EN PAGE PORTRAIT (À PROPOS) ============ */
+#pourquoi { padding: 64px 0; }
+.wrap.pourquoi {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+.pourquoi-portrait {
+  flex: 0 0 350px;
+  height: 450px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--creme-2);
+}
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pourquoi-text { flex: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.tag {
+  font-family: var(--font-mono); font-size: 0.75rem;
+  padding: 6px 12px; background: var(--creme-2);
+  border-radius: var(--radius); color: var(--navy);
+}
+
+@media (max-width: 768px) {
+  .wrap.pourquoi { flex-direction: column; gap: 32px; }
+  .pourquoi-portrait { flex: 0 0 auto; width: 100%; max-width: 320px; height: 380px; }
+}
 
 
 /* ============ ONGLET WHATSAPP ============ */
@@ -231,7 +262,7 @@ ul{ list-style:none; margin:0; padding:0; }
   .wa-tab-text{ display:none; }
 }
 
-/* ============ RESPONSIVE ============ */
+/* ============ RESPONSIVE D'ORIGINE COMPLET ============ */
 @media (max-width: 760px){
   :root{ --slide-size:200px; --slide-gap:20px; }
 
@@ -254,5 +285,3 @@ ul{ list-style:none; margin:0; padding:0; }
   .logos{ padding:48px 0 44px; }
 
   .foot-top{ flex-direction:column; gap:20px; align-items:flex-start; }
-  .foot-bottom{ flex-direction:column; gap:10px; align-items:flex-start; }
-}
